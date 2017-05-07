@@ -7,6 +7,14 @@ a {
   color: #00B7FF;
 }
 
+.container,
+.container-fluid {
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
 .navbar {
   background-image: linear-gradient(to top, rgba(33, 150, 243, 0.9), rgba(33, 150, 243, 1));
   height: 30px;
@@ -49,6 +57,13 @@ h6 {
 
 li {
   list-style-type: none;
+}
+
+@media (orientation: portrait) {
+  ul {
+    margin-left: 0;
+    padding-left: 0;   
+  }
 }
 
 .err {
