@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h2 Новости
+  hr
+  ul.nav.nav-pills
+    each src in sources
+      li(role="presentation"): a(href= src._id)= src.title
+    else
+      p Нет источников.
+  hr
+
+  ul 
+    each val in articles
+      li
+        h4= val.title
+        p= val.description
+        a(href= val.link) подробнее... 
+        h6= val.date
+        hr
+    else 
+      li Нет новостей.

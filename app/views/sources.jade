@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h2 Источники
+  hr
+
+  .row
+    .col-lg-6
+      form(action="/add_source", method="post")
+        .input-group
+          input.form-control(type="text", name="link", placeholder="URL...")
+          span.input-group-btn
+            button.btn.btn-secondary(type="submit") Add source
+
+
+
+  h5(class="err")= err
+  br
+
+  ul 
+    each src in sources.reverse()
+      li
+        h4= src.title
+        h6= src.description
+        a(href= src.link)= src.link
+        form(method="post", action= src.id)
+          button.btn.btn-default(type="submit") Delete
+        hr
+    else 
+      li Нет источников.
+  

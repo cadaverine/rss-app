@@ -1,0 +1,28 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width', initial-scale=1.0, shrink-to-fit=no)
+    title= title
+    block css
+      link(rel='stylesheet', href='/css/bootstrap.css')
+      link(rel='stylesheet', href='/css/style.css')
+    block js
+      if ENV_DEVELOPMENT
+        script(src='http://localhost:35729/livereload.js')
+  body
+    header
+      .navbar.navbar-fixed-top
+        .navbar-header
+          .pager
+            li
+              a(href="/update") &#8635
+            li
+              a(href="/") News
+            li
+              a(href="/sources") Sources
+            li
+              a(href="/about") About
+    .main-body
+      .container
+        block content
