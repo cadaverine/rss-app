@@ -5,7 +5,10 @@ block content
   hr
   ul.nav.nav-pills
     each src in sources
-      li(role="presentation"): a(href= src._id)= src.title
+      if (src._id == currentId)
+        li.active(role="presentation"): a(href= src._id)= src.title
+      else
+        li(role="presentation"): a(href= src._id)= src.title
     else
       p Нет источников.
   hr

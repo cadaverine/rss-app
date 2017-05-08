@@ -178,7 +178,7 @@ router.get('/:id?', (req, res) => {
       else if(!id) {
         id = currentId;
       }
-
+      data.currentId = id;
     })
     .then(() => findArticlesBySourceId(id))
     .then(articles => data.articles = articles)
