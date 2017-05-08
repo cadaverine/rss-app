@@ -1,8 +1,7 @@
 {
-  "name" : "Contentnr",
   "short_name": "Contentnr",
   "name": "Новостной агрегатор Contentnr",
-  "start_url": "/",
+  "start_url": ".",
   "background_color": "#2196F3",
   "icons": [{
     "src": "public/img/favicon.ico",
