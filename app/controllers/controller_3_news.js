@@ -145,7 +145,10 @@ function findArticlesBySourceId(srcId) {
         reject(error);
       }
       else {
-        resolve(articles);
+        sortedArticles = articles.sort((a, b) => {
+          return new Date(b.date) - new Date(a.date);
+        });
+        resolve(sortedArticles);
       };
     });
   });
