@@ -5,7 +5,8 @@
   "background_color": "#2196F3",
   "icons": [{
     "src": "public/img/favicon.ico",
-    "type": "image/x-icon"
+    "type": "image/x-icon",
+    "sizes": "128x128"
   }],
   "display": "standalone",
   "orientation": "portrait"
