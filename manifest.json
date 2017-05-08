@@ -1,4 +1,5 @@
 {
+  "name" : "Contentnr",
   "short_name": "Contentnr",
   "name": "Новостной агрегатор Contentnr",
   "start_url": "/",
