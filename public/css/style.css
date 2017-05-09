@@ -63,9 +63,9 @@ a {
 .pager > li.updater > a:focus,
 .pager > li.updater > span {
   box-shadow: 0 0 3px;
-  animation: waiting 1.2s infinite;
-  -moz-animation: waiting 1.2s infinite;
-  -webkit-animation: waiting 1.2s infinite; 
+  animation: waiting 1.5s infinite;
+  -moz-animation: waiting 1.5s infinite;
+  -webkit-animation: waiting 1.5s infinite; 
 }
 
 @-moz-keyframes waiting {
