@@ -16,8 +16,8 @@ block content
   ul 
     each val in articles
       li
-        h4= val.title
-        p= val.description
+        h4!= val.title
+        p!= val.description 
         a(href= val.link) подробнее... 
         h6= val.date
         hr
