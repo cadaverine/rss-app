@@ -17,7 +17,6 @@ a {
 
 .navbar {
   background-color: rgba(33, 150, 243, 1);
-  height: 30px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
@@ -48,26 +47,36 @@ a {
   margin: 0 5px;
   border: 0;
   border-radius: 0px;
+  font-size: 130%;
 }
 
 .pager > li.updater > a,
 .pager > li.updater > span {
   box-shadow: 0 0 0;
-  background-color: rgba(33, 150, 243, 1);
   color: white;
-  border: 1px solid white;
+  border-radius: 50%; 
+  background-color: #0D47A1;  
 }
 
 
 .pager > li.updater > a:hover,
 .pager > li.updater > a:focus,
 .pager > li.updater > span {
-  box-shadow: 0 0 0;
-  background-color: white;
-  color: rgba(33, 150, 243, 1);
-  border: 1px solid rgba(33, 150, 243, 1);
+  box-shadow: 0 0 3px;
+  animation: waiting 1.2s infinite;
+  -moz-animation: waiting 1.2s infinite;
+  -webkit-animation: waiting 1.2s infinite; 
 }
 
+@-moz-keyframes waiting {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes waiting {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
