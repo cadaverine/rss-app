@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  padding: 50px 25px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -9,14 +9,14 @@ a {
 
 .container,
 .container-fluid {
-  padding-right: 0px;
+  padding-right: 10px;
   padding-left: 0px;
   margin-right: 0px;
   margin-left: 0px;
 }
 
 .navbar {
-  background-image: linear-gradient(to top, rgba(33, 150, 243, 0.9), rgba(33, 150, 243, 1));
+  background-color: rgba(33, 150, 243, 1);
   height: 30px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
@@ -49,6 +49,25 @@ a {
   border: 0;
   border-radius: 0px;
 }
+
+.pager > li.updater > a,
+.pager > li.updater > span {
+  box-shadow: 0 0 0;
+  background-color: rgba(33, 150, 243, 1);
+  color: white;
+  border: 1px solid white;
+}
+
+
+.pager > li.updater > a:hover,
+.pager > li.updater > a:focus,
+.pager > li.updater > span {
+  box-shadow: 0 0 0;
+  background-color: white;
+  color: rgba(33, 150, 243, 1);
+  border: 1px solid rgba(33, 150, 243, 1);
+}
+
 
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,

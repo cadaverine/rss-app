@@ -9,7 +9,7 @@ var config = {
       name: 'rss-app'
     },
     port: process.env.PORT || 3000,
-    db: process.env.MONGODB_URI
+    db: 'mongodb://localhost/rss-app-development'
   },
   production: {
     root: rootPath,
