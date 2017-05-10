@@ -4,6 +4,7 @@ var express = require('express'),
     Source = mongoose.model('Source'),
     Article = mongoose.model('Article'),
     parser = require("rss-parser");
+
     
 
 var maxNewsNum = 10,
@@ -17,12 +18,10 @@ module.exports = function (app) {
 
 
 
-
-
 //***************************
 //***************************
 //***************************
-// /update (get) section:
+// /update (PUT) section:
 //***************************
 //***************************
 //***************************
@@ -103,7 +102,7 @@ function update() {
   })
 }
 
-router.get('/update', (req, res) => {
+router.put('/update', (req, res) => {
   update()
     .then(() => res.redirect('/'))
     .catch(error => {
@@ -119,7 +118,7 @@ router.get('/update', (req, res) => {
 //***************************
 //***************************
 //***************************
-// /:id? (get) section:
+// /:id? (GET) section:
 //***************************
 //***************************
 //***************************

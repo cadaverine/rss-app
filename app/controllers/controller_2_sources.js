@@ -20,7 +20,7 @@ module.exports = function (app) {
 //***************************
 //***************************
 //***************************
-// /sources (get) section:
+// /sources (GET) section:
 //***************************
 //***************************
 //***************************
@@ -49,7 +49,7 @@ router.get('/sources', (req, res) => {
 //***************************
 //***************************
 //***************************
-// /add_source (post) section:
+// /add_source (POST) section:
 //***************************
 //***************************
 //***************************
@@ -121,17 +121,18 @@ router.post('/add_source', (req, res) => {
 //***************************
 //***************************
 //***************************
-// /:id (post) section:
+// /:id (DELETE) section:
 //***************************
 //***************************
 //***************************
 
 
-// Нет обработки ошибок.
-router.post("/:id", (req, res) => {
-  Source.remove({ _id: req.params.id }, () => {
-    Article.remove({ sourceId: req.params.id }, () => {
-      res.redirect('/sources');      
-    })
-  })
+router.delete("/:id", (req, res) => {
+  Source.remove({ _id: req.params.id })
+    .then(() => Article.remove({ sourceId: req.params.id }))
+    .then(() => res.redirect('/sources'))
+    .catch(error => {
+      sourceVar.err = error;
+      res.redirect('/sources');
+    });
 })

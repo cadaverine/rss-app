@@ -23,7 +23,7 @@ block content
         h4= src.title
         h6= src.description
         a(href= src.link)= src.link
-        form(method="post", action= src.id)
+        form(method="post", action= src.id + "?_method=DELETE")
           button.btn.btn-default(type="submit") Delete
         hr
     else 
