@@ -152,7 +152,7 @@ a.navbar-brand:focus>.glyphicon-refresh {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .navbar-center {
     -ms-transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
