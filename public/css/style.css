@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -6,7 +8,7 @@ body {
 }
 
 a {
-  color: #669;
+  color: #6666CC;
 }
 
 .container {
@@ -16,9 +18,10 @@ a {
   margin-left: 0px;
 }
 
-// .main-text-content {
-//   text-align: justify;
-// }
+.navbar {
+  font-size: 16px;
+  font-family: 'Raleway', sans-serif;
+}
 
 // .navbar {
 //   background-color: rgba(33, 150, 243, 1);

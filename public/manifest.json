@@ -1,12 +1,24 @@
 {
   "short_name": "CONTENTNR",
-  "name": "Новостной агрегатор CONTENTNR",
+  "name": "Новостной агрегатор Contentnr",
   "start_url": ".",
   "background_color": "#222222",
   "icons": [{
+    "src": "public/img/RSS128.png",
+    "type": "image/png",
+    "sizes": "128x128"
+  },{
     "src": "public/img/RSS.png",
     "type": "image/png",
     "sizes": "144x144"
+  },{
+    "src": "public/img/RSS192.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  },{
+    "src": "public/img/RSS256.png",
+    "type": "image/png",
+    "sizes": "256x256"
   }],
   "display": "standalone",
   "orientation": "portrait"
