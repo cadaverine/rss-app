@@ -7,7 +7,7 @@ var express = require('express'),
 
     
 
-var maxNewsNum = 10,
+var maxNewsNum = 15,
     data = {},
     currentId;
 

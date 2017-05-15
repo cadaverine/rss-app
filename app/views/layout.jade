@@ -3,30 +3,48 @@ html(lang='en')
   head
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width', initial-scale=1.0, shrink-to-fit=no)
-    meta(name="apple-mobile-web-app-capable", content="yes")
-    meta(name="apple-mobile-web-app-title", content="Contentnr")
-    link(rel="manifest", href="/manifest.json")
-    link(rel="apple-touch-icon", href="/img/favicon.ico.")
+    meta(name='apple-mobile-web-app-capable', content='yes')
+    meta(name='apple-mobile-web-app-title', content='Contentnr')
+    link(rel='manifest', href='/manifest.json')
+    link(rel="apple-touch-icon", href="/img/favicon.ico")
     title= title
     block css
-      link(rel='stylesheet', href='/css/bootstrap.css')
+      //- link(rel='stylesheet', href='/css/bootstrap.css')
+      link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
       link(rel='stylesheet', href='/css/style.css')
     block js
+      script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js")
+      script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin="anonymous")
       if ENV_DEVELOPMENT
         script(src='http://localhost:35729/livereload.js')
   body
     header
-      .navbar.navbar-fixed-top
-        .navbar-header
-          .pager
-            li.updater
-              a(href="/update/?_method=PUT") &#8635
-            li
-              a(href="/") News
-            li
-              a(href="/sources") Sources
-            li
-              a(href="/about") About
+      nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse
+        .container-fluid
+          .navbar-header
+            a.navbar-brand(href="/update/?_method=PUT", title="Update") 
+              span.glyphicon.glyphicon-refresh(aria-hidden="true") 
+            a.navbar-brand.navbar-center(href="/") CONTENTNR
+            button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#bs-example-navbar-collapse-1", aria-expanded="false")
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar 
+
+          #bs-example-navbar-collapse-1.collapse.navbar-collapse 
+            ul.nav.navbar-nav
+              li: a(href="/") News
+                span.sr-only current
+              li: a(href="/sources") Sources
+              li.dropdown
+                a.dropdown-toggle(href="#", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") Profile
+                  span.caret
+                ul.dropdown-menu
+                  li: a(href="#") Sign in
+                  li: a(href="#") Sign up
+                  li.divider(role="separator")
+                  li: a(href="#") Logout
+              li: a(href="/about") About
     .main-body
       .container
         block content

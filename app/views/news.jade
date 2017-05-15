@@ -12,14 +12,16 @@ block content
     else
       p Нет источников.
   hr
-
-  ul 
+  ul
     each val in articles
-      li
-        h4!= val.title
-        p!= val.description 
-        a(href= val.link) подробнее... 
-        h6= val.date
-        hr
+      if ((articles.indexOf(val)) % 3 === 0)
+        .row.row-eq-height
+      .col-md-4
+        .thumbnail
+          li
+            h4!= val.title
+            p.main-text-content!= val.description 
+            a(href= val.link) подробнее... 
+            h6= val.date
     else 
       li Нет новостей.
