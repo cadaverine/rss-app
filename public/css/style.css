@@ -120,14 +120,19 @@ a.navbar-brand:focus>.glyphicon-refresh {
   -webkit-animation: waiting 1.8s infinite; 
 }
 
-@-moz-keyframes waiting {
+@keyframes waiting {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
+@-moz-keyframes waiting {
+  0% { -moz-transform: rotate(0deg); }
+  100% { -moz-transform: rotate(360deg); }
+}
+
 @-webkit-keyframes waiting {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
 }
 
 @media (orientation: portrait) {
