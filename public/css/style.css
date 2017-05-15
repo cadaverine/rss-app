@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -114,7 +115,6 @@ li {
 
 a.navbar-brand:hover>.glyphicon-refresh,
 a.navbar-brand:focus>.glyphicon-refresh {
-  // box-shadow: 0 0 3px;
   animation: waiting 1.8s infinite;
   -moz-animation: waiting 1.8s infinite;
   -webkit-animation: waiting 1.8s infinite; 
@@ -145,6 +145,10 @@ a.navbar-brand:focus>.glyphicon-refresh {
 
 @media (max-width: 768px) {
   .navbar-center {
+    -ms-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
     transform: translateX(-50%);
     left: 50%;
     position: absolute;
