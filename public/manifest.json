@@ -1,12 +1,12 @@
 {
-  "short_name": "Contentnr",
-  "name": "Новостной агрегатор Contentnr",
+  "short_name": "CONTENTNR",
+  "name": "Новостной агрегатор CONTENTNR",
   "start_url": ".",
-  "background_color": "#2196F3",
+  "background_color": "#666688",
   "icons": [{
-    "src": "public/img/favicon.ico",
-    "type": "image/x-icon",
-    "sizes": "128x128"
+    "src": "public/img/RSS.png",
+    "type": "image/png",
+    "sizes": "144x144"
   }],
   "display": "standalone",
   "orientation": "portrait"

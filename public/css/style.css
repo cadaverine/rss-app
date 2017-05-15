@@ -163,9 +163,11 @@ a.navbar-brand:focus>.glyphicon-refresh {
 .btn-delete {
   margin-top: 10px;
 }
-// .err {
-//   color: red;
-// }
+
+.err {
+  margin-top: 10px;
+  color: red;
+}
 
 // .btn-default {
 //   margin-top: 10px;
