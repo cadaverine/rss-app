@@ -112,7 +112,8 @@ li {
   border: 0;
 }
 
-a.navbar-brand:active>.glyphicon-refresh {
+a.navbar-brand:hover>.glyphicon-refresh,
+a.navbar-brand:focus>.glyphicon-refresh {
   // box-shadow: 0 0 3px;
   animation: waiting 1.8s infinite;
   -moz-animation: waiting 1.8s infinite;
