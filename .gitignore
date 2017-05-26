@@ -3,3 +3,6 @@ public/components
 config/
 .nyc_output
 .sass-cache
+
+# Environment variables
+.env

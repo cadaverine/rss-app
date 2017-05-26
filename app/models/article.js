@@ -3,6 +3,7 @@ var mongoose = require('mongoose'),
 
 var ArticleSchema = new Schema({
   sourceId: String,
+  imageLink: String,
   title: String,
   link: String,
   description: String,

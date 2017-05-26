@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h2 Новости
+  h2.main-title Новости
   hr
   ul.nav.nav-pills
     each src in sources
@@ -19,7 +19,8 @@ block content
       .col-md-4
         .thumbnail
           li
-            h4!= val.title
+            h4.article-title!= val.title
+            //- img.content-image(src!= val.imageLink)
             p.main-text-content!= val.description 
             a(href= val.link) подробнее... 
             h6= val.date

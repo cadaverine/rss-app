@@ -1,8 +1,9 @@
-
+require('dotenv').load();
 
 var express = require('express'),
   config = require('./config/config'),
   glob = require('glob'),
+  passport = require('passport')
   mongoose = require('mongoose');
 
 mongoose.connect(config.db);

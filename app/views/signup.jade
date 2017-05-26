@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  -if(errors)
+    each error in errors
+      div.alert.alert-danger #{error.msg}  
+  h2.main-title Регистрация
+  hr
+  .col-md-6
+    #logbox
+      form#signup(method='post', action='/signup')
+        h1 create an account
+        input.input.pass(name='username', type='text', placeholder="What's your username?", autofocus='autofocus')
+        input.input.pass(name='password', type='password', placeholder='Choose a password')
+        input.input.pass(name='password2', type='password', placeholder='Confirm password')
+        input.input.pass(name='email', type='email', placeholder='Email address')
+        input.inputButton(type='submit', value='Sign me up!')
+        .text-center
+          | already have an account? 
+          a#login_id(href='/login') login

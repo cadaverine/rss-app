@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h2.main-title Войти
+  hr
+  .col-md-6
+    #logbox
+      form#signup(method='post', action='/login')
+        h1 account login
+        input.input.pass(name='username', type='text', placeholder='enter your username')
+        input.input.pass(name='password', type='password', placeholder='enter your password', required='required')
+        input.inputButton(type='submit', value='Sign me in!')
+        .text-center
+          a(href='/signup', id='') create an account

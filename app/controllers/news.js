@@ -1,27 +1,19 @@
-var express = require('express'),
-    router = express.Router(),
-    mongoose = require('mongoose'),
+var mongoose = require('mongoose'),
     Source = mongoose.model('Source'),
     Article = mongoose.model('Article'),
     parser = require("rss-parser");
+var User = mongoose.model('User');    
 
-    
 
 var maxNewsNum = 15,
     data = {},
     currentId;
 
 
-module.exports = function (app) {
-  app.use('/', router);
-};
-
-
-
 //***************************
 //***************************
 //***************************
-// /update (PUT) section:
+// "updateNews" section:
 //***************************
 //***************************
 //***************************
@@ -47,12 +39,15 @@ function saveArticlesToDB(parsed, newsNum) {
     let count = 0;
     let entries = parsed.feed.entries;
     let numOfArticles = entries.length > newsNum ? newsNum : entries.length;
+    console.log(entries[0]);
+
 
     for (let i = 0; i < numOfArticles; i++){
       new Article({
         sourceId:    parsed.id,
         title:       entries[i].title,
         link:        entries[i].link,
+        // imageLink:   entries[i].enclosure.url ? entries[i].enclosure.url : "", 
         description: entries[i].contentSnippet,
         date:        (new Date(Date.parse(entries[i].pubDate))).toUTCString()
       }).save(error => {
@@ -70,47 +65,50 @@ function saveArticlesToDB(parsed, newsNum) {
   });
 };
 
-function update() {
+
+function update(currentUser) {
   return new Promise((resolve, reject) => {
-    Source.find((error, sources) => {
-      if (error) {
-        reject("Ошибка обновления: ", error);
-      }
-      else {
-        if(sources.length) {
-          for(let i = 0; i < sources.length; i++) {
-            parseSourceToVariable(sources[i])
-              .then(parsed => {
-                Article.remove({ sourceId: sources[i]._id }, () => {
-                  saveArticlesToDB(parsed, maxNewsNum);
-                })
-              })
-              .then(() => {
-                if(i == sources.length - 1) {
-                  resolve()
-                }
-              })
-              .catch(error => reject("Ошибка обновления: ", error));
-          }
+    User
+      .findOne({_id: currentUser._id})
+      .populate('sources')
+      .exec((error, user) => {
+        if(error) {
+          reject(error);
         }
         else {
-          resolve();
+          var sources = user.sources;
+          if(sources.length) {
+            for(let i = 0; i < sources.length; i++) {
+              parseSourceToVariable(sources[i])
+                .then(parsed => {
+                  Article.remove({ sourceId: sources[i]._id }, () => {
+                    saveArticlesToDB(parsed, maxNewsNum);
+                  })
+                })
+                .then(() => {
+                  if(i == sources.length - 1) {
+                    resolve()
+                  }
+                })
+                .catch(error => reject("Ошибка обновления: ", error));
+            }
+          }
+          else {
+            resolve();
+          }
         }
-
-      }
-    })
+      })
   })
 }
 
-router.put('/update', (req, res) => {
-  update()
+module.exports.updateNews = (req, res) => {
+  update(req.user)
     .then(() => res.redirect('/'))
     .catch(error => {
       console.log("Произошла ошибка." + error);
       res.redirect('/');
     })
-});
-
+  };
 
 
 
@@ -118,24 +116,27 @@ router.put('/update', (req, res) => {
 //***************************
 //***************************
 //***************************
-// /:id? (GET) section:
+// "getNews" section:
 //***************************
 //***************************
 //***************************
 
 
-function findSources(){
+function findSources(currentUser){
   return new Promise((resolve, reject) => {
-    Source.find((error, sources) => {
-      if(error) {
-        reject(error);
-      }
-      else{
-        resolve(sources);
-      }
-    });  
-  });
-};
+    User
+      .findOne({_id: currentUser._id})
+      .populate('sources')
+      .exec((error, user) => {
+        if (error) {
+          reject(error);
+        }
+        else {
+          resolve(user.sources);
+        }
+      })
+  })
+}
 
 function findArticlesBySourceId(srcId) {
   return new Promise((resolve, reject) => {
@@ -153,10 +154,11 @@ function findArticlesBySourceId(srcId) {
   });
 };
 
-router.get('/:id?', (req, res) => {
+
+module.exports.getNews = (req, res) => {
   data.title = "Новости";
   let id = req.params.id;
-  findSources()
+  findSources(req.user)
     .then(sources => {
       data.sources = sources;
 
@@ -187,5 +189,4 @@ router.get('/:id?', (req, res) => {
       console.error("Произошла ошибка.", error);
       res.render('news', data); // <== Неопределенное поведение? (ошибка)
     });
-});
-
+};

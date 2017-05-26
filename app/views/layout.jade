@@ -9,7 +9,6 @@ html(lang='en')
     link(rel='manifest', href='/manifest.json')
     title= title
     block css
-      //- link(rel='stylesheet', href='/css/bootstrap.css')
       link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
       link(rel='stylesheet', href='/css/style.css')
     block js
@@ -40,11 +39,22 @@ html(lang='en')
                 a.dropdown-toggle(href="#", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") Profile
                   span.caret
                 ul.dropdown-menu
-                  li: a(href="#") Sign in
-                  li: a(href="#") Sign up
-                  li.divider(role="separator")
-                  li: a(href="#") Logout
+                  -if(!user)
+                    li: a(href="/login") Sign in
+                    li.divider(role="separator")
+                    li: a(href="/signup") Sign up
+                  -if(user)
+                    //- li: a(href="#") Dashboard
+                    //- li.divider(role="separator")
+                    li: a(href="/logout") Logout
               li: a(href="/about") About
     .main-body
       .container
-        block content
+        .system-messages
+          -if(error != "")
+            div.alert.alert-danger #{error} 
+          -if(error_msg != "")
+            div.alert.alert-danger #{error_msg} 
+          -if(success_msg != "")
+            div.alert.alert-success #{success_msg}  
+      block content
