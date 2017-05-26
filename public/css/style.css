@@ -270,7 +270,8 @@ a.navbar-brand:focus>.glyphicon-refresh {
 #logbox {
   padding: 10px;
   margin: 10px auto;
-  width: 340px;
+  // width: 340px;
+  width: auto;
   background-color: #fff;
   -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
