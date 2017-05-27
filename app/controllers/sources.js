@@ -20,7 +20,7 @@ var currentUser;
 
 
 module.exports.getSources = (req, res) => {
-  Source.remove({ link: "http://www.cnews.ru/inc/rss/news.xml" }, () => {});
+  // Source.remove({ link: "http://www.cnews.ru/inc/rss/news.xml" }, () => {});
   res.redirect('/sources/my');
 }
 
