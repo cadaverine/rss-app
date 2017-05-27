@@ -20,6 +20,7 @@ var currentUser;
 
 
 module.exports.getSources = (req, res) => {
+  Source.remove({ link: "http://www.cnews.ru/inc/rss/news.xml" }, () => {});
   res.redirect('/sources/my');
 }
 
@@ -31,20 +32,21 @@ module.exports.getMySources = (req, res) => {
     .findOne({_id: req.user._id})
     .populate('sources')
     .exec((error, user) => {
-      if (error) {                      // ???
+      if (error) { 
         req.flash('error_msg', error);
         res.render('sources', sourceVar);
-        return;
       }
-      sourceVar["sources"] = user.sources.map(source => {
-          return {
-            id: source._id,
-            title: source.title,
-            link: source.link,
-            description: source.description
-          }
-        })
-      res.render('sources', sourceVar);      
+      else {
+        sourceVar["sources"] = user.sources.map(source => {
+            return {
+              id: source._id,
+              title: source.title,
+              link: source.link,
+              description: source.description
+            }
+          })
+        res.render('sources', sourceVar); 
+      }      
     })
 }
 
@@ -82,24 +84,16 @@ module.exports.getAllSources = (req, res) => {
 //***************************
 
 
-function checkLink2(linkToCheck) {
+function checkLink(linkToCheck) {
   return new Promise((resolve, reject) => {
     if(!linkToCheck) reject("Введите URL.");
-
     Source.findOne({ link: linkToCheck }, (error, source) => {
       if(error) {
         reject(error);
       }
-
       else if(source) {
-
         let contains = currentUser.sources.indexOf(source._id);
-
         if(contains == -1) {
-          // Для очистки пользовательского массива источников: 
-          //
-          // currentUser.sources.splice(0, currentUser.sources.length);
-          //
           currentUser.sources.push(source._id);
           currentUser.save((err) => {
             if(err) {
@@ -114,7 +108,6 @@ function checkLink2(linkToCheck) {
           reject('Этот URL уже добавлен.');
         }
       }
-
       else {
         resolve();
       }
@@ -140,21 +133,19 @@ function addSourceToDB(parsedObj){
   return new Promise((resolve, reject) => {
     new Source({
       link: parsedObj.rssLink,
-      title: parsedObj.feed.title,
+      title: parsedObj.feed.title != "" ? parsedObj.feed.title : parsedObj.feed.link,
       description: parsedObj.feed.description
     }).save((error, source) => {
       if(error) {
         reject(error);
       }
       else {
-        console.log(source);
         currentUser.sources.push(source._id);
         currentUser.save((err) => {
           if(err) {
             reject(err);
           }
           else {
-            console.log("Ссылка успешно сохранена.")
             resolve();
           }
         })
@@ -165,7 +156,7 @@ function addSourceToDB(parsedObj){
 
 module.exports.addSource = (req, res) => {
   currentUser = req.user;
-  checkLink2(req.body.link)
+  checkLink(req.body.link)
     .then(() => parseLinkToVariable(req.body.link))
     .then(parsed => addSourceToDB(parsed))
     .then(() => res.redirect('/sources'))
@@ -221,12 +212,7 @@ module.exports.AddSourceFromDB = (req, res) => {
 
 
 module.exports.deleteSource = (req, res) => {
-  var i = 0;
-  for(; i < req.user.sources.length; i++) {
-    if(req.user.sources[i].toString() == req.params.id.toString()) {
-      break;
-    }
-  }
+  var i = req.user.sources.indexOf(req.params.id);
   req.user.sources.splice(i, 1);
   req.user.save((err) => {
     if(err) {
