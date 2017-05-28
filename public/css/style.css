@@ -11,6 +11,26 @@ a {
   color: #6666CC;
 }
 
+li {
+  list-style-type: none;
+}
+
+ol > li {
+  list-style-type: decimal;
+}
+
+h1 {
+  text-align: center;
+  font-size: 175%;
+  color: #757575;
+  font-weight: 300;
+}
+
+h1, input {
+  font-family: "Open Sans", Helvetica, sans-serif;
+}
+
+
 .container {
   padding-right: 5px;
   padding-left: 0px;
@@ -23,80 +43,6 @@ a {
   font-family: 'Raleway', sans-serif;
 }
 
-// .navbar {
-//   background-color: rgba(33, 150, 243, 1);
-//   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-// }
-
-// .pager {
-//   margin: 10px;
-// }
-
-// .pager li > a,
-// .pager li > span,
-// .btn-default,
-// .form-control,
-// .btn-secondary,
-// .nav-pills > li {
-//   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-//   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-// }
-
-// .pager li > a:hover,
-// .btn-default:hover,
-// .form-control:hover,
-// .btn-secondary:hover,
-// .nav-pills > li:hover {
-//   box-shadow: 3px 5px 10px rgba(0,0,0,0.25), 3px 5px 10px rgba(0,0,0,0.22);
-// }
-
-// .pager li > a,
-// .pager li > span {
-//   margin: 0 5px;
-//   border: 0;
-//   border-radius: 0px;
-//   font-size: 130%;
-// }
-
-// .pager > li.updater > a,
-// .pager > li.updater > span {
-//   box-shadow: 0 0 0;
-//   color: white;
-//   border-radius: 50%; 
-//   background-color: #0D47A1;  
-// }thu
-
-// .pager > li.updater > a:hover,
-// .pager > li.updater > a:focus,
-// .pager > li.updater > span {
-//   box-shadow: 0 0 3px;
-//   animation: waiting 1.8s infinite;
-//   -moz-animation: waiting 1.8s infinite;
-//   -webkit-animation: waiting 1.8s infinite; 
-// }
-
-// @-moz-keyframes waiting {
-//   0% { transform: rotate(0deg); }
-//   100% { transform: rotate(360deg); }
-// }
-
-// @-webkit-keyframes waiting {
-//   0% { transform: rotate(0deg); }
-//   100% { transform: rotate(360deg); }
-// }
-
-// .nav-pills > li.active > a,
-// .nav-pills > li.active > a:hover,
-// .nav-pills > li.active > a:focus {
-//   color: #fff;
-//   background-color: rgba(33, 150, 243, 0.9);
-// }
-
-// h6 {
-//   color: grey;
-//   font-style: italic;
-// }
-
 .nav-pills > li > a {
   color: #666;
   border-radius: 0;
@@ -107,14 +53,6 @@ a {
 .nav-pills > li.active > a:focus {
   color: #eee;
   background-color: #668;
-}
-
-li {
-  list-style-type: none;
-}
-
-ol > li {
-  list-style-type: decimal;
 }
 
 .content-image {
@@ -242,17 +180,6 @@ a.navbar-brand:focus>.glyphicon-refresh {
   -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
-}
-
-h1 {
-  text-align: center;
-  font-size: 175%;
-  color: #757575;
-  font-weight: 300;
-}
-
-h1, input {
-  font-family: "Open Sans", Helvetica, sans-serif;
 }
 
 .input {
