@@ -15,7 +15,7 @@ module.exports = function (app) {
   app.use('/', router);
 };
 
-
+// for PUT and DELETE methods support
 router.use((req, res, next) => {
     if(req.query._method == 'DELETE') {
         req.method = 'DELETE';

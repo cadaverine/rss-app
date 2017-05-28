@@ -4,7 +4,7 @@ $(document).ready(function(){
                 // make all link remain in web app mode.
                 $('a').click(function() {
                         window.location = $(this).attr('href');
-            return false;
+            			return false;
                 });
         }
 });

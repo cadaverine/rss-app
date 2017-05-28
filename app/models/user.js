@@ -12,7 +12,7 @@ var UserSchema = mongoose.Schema({
 		type: String
 	},
 	email: {
-		type: String,
+		type: String
 	},
 	sources: [{type: Schema.Types.ObjectId, ref: 'Source'}]
 });

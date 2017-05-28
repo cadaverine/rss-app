@@ -1,12 +1,11 @@
 var mongoose = require('mongoose'),
+    User = mongoose.model('User'),
     Source = mongoose.model('Source'),
     Article = mongoose.model('Article'),
     parser = require("rss-parser");
     
 
 var sourceVar = { sources: [] };
-
-var User = mongoose.model('User');
 var currentUser;
 
 

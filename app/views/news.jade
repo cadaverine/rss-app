@@ -3,7 +3,7 @@ extends layout
 block content
   h2.main-title Новости
   hr
-  ul.nav.nav-pills
+    ul.nav.nav-pills
     each src in sources
       if (src._id == currentId)
         li.active(role="presentation"): a(href= src._id)= src.title

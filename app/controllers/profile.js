@@ -4,7 +4,6 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 
-
 //***************************
 //***************************
 //***************************
@@ -33,9 +32,6 @@ module.exports.getLoginPage = (req, res) => {
 
 module.exports.getSignupPage = (req, res) => {
   // User.remove({}, () => { console.log("Все пользователи удалены.") });
-  // User.collection.dropIndexes((err, results) => {
-  //     console.log("Индексы сброшены.");
-  // });
   res.render('signup', {
     title: 'Регистрация'
   });
@@ -87,7 +83,6 @@ module.exports.sendSignupInfo = (req, res) => {
         });
 
         req.flash('success_msg', 'You are registered and can now login');
-
         res.redirect('/login');
       }
     })

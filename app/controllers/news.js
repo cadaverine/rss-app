@@ -1,13 +1,14 @@
 var mongoose = require('mongoose'),
+    User = mongoose.model('User'),
     Source = mongoose.model('Source'),
     Article = mongoose.model('Article'),
     parser = require("rss-parser");
-var User = mongoose.model('User');    
-
 
 var maxNewsNum = 15,
     data = {},
     currentId;
+
+
 
 
 //***************************
@@ -39,8 +40,6 @@ function saveArticlesToDB(parsed, newsNum) {
     let count = 0;
     let entries = parsed.feed.entries;
     let numOfArticles = entries.length > newsNum ? newsNum : entries.length;
-    console.log(entries[0]);
-
 
     for (let i = 0; i < numOfArticles; i++){
       new Article({
@@ -105,7 +104,7 @@ module.exports.updateNews = (req, res) => {
   update(req.user)
     .then(() => res.redirect('/'))
     .catch(error => {
-      console.log("Произошла ошибка." + error);
+      req.flash("error_msg", error);
       res.redirect('/');
     })
   };
@@ -186,7 +185,7 @@ module.exports.getNews = (req, res) => {
     .then(() => res.render('news', data))
     .then(() => currentId = id)
     .catch(error => { 
-      console.error("Произошла ошибка.", error);
-      res.render('news', data); // <== Неопределенное поведение? (ошибка)
+      req.flash("error_msg", error);
+      res.render('news', data);
     });
 };

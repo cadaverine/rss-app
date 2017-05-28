@@ -3,10 +3,11 @@ html(lang='en')
   head
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width', initial-scale=1.0, shrink-to-fit=no)
-    meta(name='apple-mobile-web-app-capable', content='yes')
+    //- meta(name='apple-mobile-web-app-capable', content='yes')
     meta(name="apple-mobile-web-app-status-bar-style", content="black")
     meta(name='apple-mobile-web-app-title', content='Contentnr')
-    link(rel="apple-touch-startup-image", href="/img/Contentnr.png")
+    link(rel="apple-touch-startup-image", href="/img/Contentnr-apple-touch-startup-image-640x920.png")
+    link(rel="apple-touch-startup-image", href="/img/Contentnr-apple-touch-startup-image-1242x2148.png", media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)", rel="apple-touch-startup-image")
     link(rel="apple-touch-icon", href="/img/RSS.png")
     link(rel="apple-touch-icon", sizes="128x128",href="/img/RSS128.png")
     link(rel="apple-touch-icon", sizes="192x192", href="/img/RSS192.png")
@@ -19,7 +20,7 @@ html(lang='en')
     block js
       script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js")
       script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin="anonymous")
-      script(type="text/javascript", src="/scripts/index.js")
+      //- script(type="text/javascript", src="/scripts/index.js")
       if ENV_DEVELOPMENT
         script(src='http://localhost:35729/livereload.js')
   body
