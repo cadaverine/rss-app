@@ -11,26 +11,6 @@ a {
   color: #6666CC;
 }
 
-li {
-  list-style-type: none;
-}
-
-ol > li {
-  list-style-type: decimal;
-}
-
-h1 {
-  text-align: center;
-  font-size: 175%;
-  color: #757575;
-  font-weight: 300;
-}
-
-h1, input {
-  font-family: "Open Sans", Helvetica, sans-serif;
-}
-
-
 .container {
   padding-right: 5px;
   padding-left: 0px;
@@ -43,6 +23,7 @@ h1, input {
   font-family: 'Raleway', sans-serif;
 }
 
+
 .nav-pills > li > a {
   color: #666;
   border-radius: 0;
@@ -53,6 +34,14 @@ h1, input {
 .nav-pills > li.active > a:focus {
   color: #eee;
   background-color: #668;
+}
+
+li {
+  list-style-type: none;
+}
+
+ol > li {
+  list-style-type: decimal;
 }
 
 .content-image {
@@ -180,6 +169,17 @@ a.navbar-brand:focus>.glyphicon-refresh {
   -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+}
+
+h1 {
+  text-align: center;
+  font-size: 175%;
+  color: #757575;
+  font-weight: 300;
+}
+
+h1, input {
+  font-family: "Open Sans", Helvetica, sans-serif;
 }
 
 .input {
