@@ -33,9 +33,9 @@ module.exports.getLoginPage = (req, res) => {
 
 module.exports.getSignupPage = (req, res) => {
   // User.remove({}, () => { console.log("Все пользователи удалены.") });
-  User.collection.dropIndexes((err, results) => {
-      console.log("Индексы сброшены.");
-  });
+  // User.collection.dropIndexes((err, results) => {
+  //     console.log("Индексы сброшены.");
+  // });
   res.render('signup', {
     title: 'Регистрация'
   });
