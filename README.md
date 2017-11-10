@@ -7,5 +7,5 @@ Node.js, Express, MVC, MongoDB, Mongoose, Passport.js, Jade, Bootstrap.
 https://contentnr.herokuapp.com/
 
 Тестовый аккаунт:
-логин - qqq,
-пароль - qqq
+логин - **qqq**,
+пароль - **qqq**
