@@ -15,6 +15,7 @@ module.exports = function (app) {
   app.use('/', router);
 };
 
+
 // for PUT and DELETE methods support
 router.use((req, res, next) => {
     if(req.query._method == 'DELETE') {
@@ -37,6 +38,15 @@ function ensureAuthenticated(req, res, next){
         res.redirect('/login');
     }
 }
+
+
+// Redirect
+router.get('*', function(req, res, next) {
+  if (req.headers['x-forwarded-proto'] != 'https')
+    res.redirect('https://www.contentnr.com' + req.url)
+  else
+    next();
+})
 
 // About
 router.get('/about', ctrlAbout.about);
