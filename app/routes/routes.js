@@ -43,11 +43,10 @@ function ensureAuthenticated(req, res, next){
 // Redirect
 router.get('*', function(req, res, next) {
   if (req.headers['x-forwarded-proto'] != 'https')
-    res.redirect(process.env.HOSTNAME + req.url)
+    res.redirect('https://www.contentnr.com' + req.url)
   else
     next();
 })
-
 
 // About
 router.get('/about', ctrlAbout.about);
