@@ -40,6 +40,7 @@ function ensureAuthenticated(req, res, next){
 }
 
 
+
 // Redirect
 // router.get('*', function(req, res, next) {
 //   if (req.headers['x-forwarded-proto'] != 'https')

@@ -43,11 +43,3 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
     	callback(null, isMatch);
 	});
 }
-
-module.exports.addSource = function(source, callback) {
-	User.sources.push(source);
-}
-
-module.exports.deleteSource = (source) => {
-	User.S
-}

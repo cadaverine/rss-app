@@ -19,6 +19,11 @@ models.forEach(function (model) {
 });
 var app = express();
 
+
+// var redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
+
+// app.use(redirectToHTTPS([/localhost:(\d{4})/], []));
+
 module.exports = require('./config/express')(app, config);
 
 app.listen(config.port, function () {

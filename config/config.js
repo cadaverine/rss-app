@@ -1,8 +1,8 @@
-  var path = require('path'),
-    rootPath = path.normalize(__dirname + '/..'),
-    env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV || 'development';
+const path = require('path');
+const rootPath = path.normalize(__dirname + '/..');
 
-var config = {
+const config = {
   development: {
     root: rootPath,
     app: {
@@ -16,7 +16,7 @@ var config = {
     app: {
       name: 'rss-app'
     },
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 443,
     db: process.env.MONGODB_URI
   },
   test: {
