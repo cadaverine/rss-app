@@ -1,6 +1,9 @@
-echo "This script..."
+echo "This script prepares the environment to run the application."
 
-export SECRET=1111
+export SECRET=1
+export PORT=8080
+export NODE_ENV="development"
+export MONGODB_URI="mongodb://localhost/rss-app-development"
 
-`service mongodb start &`
-`npm start`
+echo `service mongodb start &`
+echo `npm start`
