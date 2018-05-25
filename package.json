@@ -4,7 +4,7 @@
   "private": true,
   "main": "app.js",
   "scripts": {
-    "start": "env SECRET='test' node app.js",
+    "start": "node app.js",
     "test": "NODE_ENV=test mocha --recursive test",
     "test:coverage": "nyc npm test",
     "test:unit": "mocha --recursive test/middleware test/models test/routes",
@@ -37,6 +37,7 @@
     "chai": "^4.1.2",
     "debug": "^3.1.0",
     "gulp": "^4.0.0",
+    "gulp-cli": "^2.0.1",
     "gulp-livereload": "^3.8.0",
     "gulp-nodemon": "^2.0.2",
     "gulp-plumber": "^1.0.0",

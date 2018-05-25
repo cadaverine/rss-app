@@ -1,7 +1,7 @@
-var gulp = require('gulp'),
-  nodemon = require('gulp-nodemon'),
-  plumber = require('gulp-plumber'),
-  livereload = require('gulp-livereload');
+const gulp = require('gulp');
+const nodemon = require('gulp-nodemon');
+const plumber = require('gulp-plumber');
+const livereload = require('gulp-livereload');
 
 
 gulp.task('develop', function () {
@@ -21,6 +21,4 @@ gulp.task('develop', function () {
   });
 });
 
-gulp.task('default', [
-  'develop'
-]);
+gulp.task('default', gulp.series('develop'));
