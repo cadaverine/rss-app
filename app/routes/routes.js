@@ -18,25 +18,25 @@ module.exports = function (app) {
 
 // for PUT and DELETE methods support
 router.use((req, res, next) => {
-    if(req.query._method == 'DELETE') {
-        req.method = 'DELETE';
-        req.url = req.path;
-    }
-    else if(req.query._method == 'PUT') {
-        req.method = 'PUT';
-        req.url = req.path;
-    }
-    next();
+  if (req.query._method == 'DELETE') {
+    req.method = 'DELETE';
+    req.url = req.path;
+  }
+  else if(req.query._method == 'PUT') {
+    req.method = 'PUT';
+    req.url = req.path;
+  }
+  next();
 });
 
 
 function ensureAuthenticated(req, res, next){
-    if(req.isAuthenticated()){
-        return next();
-    } else {
-        req.flash('error_msg','You are not logged in');
-        res.redirect('/login');
-    }
+  if (req.isAuthenticated())
+    return next();
+  else {
+    req.flash('error_msg','You are not logged in');
+    res.redirect('/login');
+  }
 }
 
 
@@ -65,5 +65,3 @@ router.get('/logout', ctrlProfile.logout);
 // News
 router.get('/:id?', ensureAuthenticated, ctrlNews.getNews);
 router.put('/update', ensureAuthenticated, ctrlNews.updateNews);
-
-

@@ -11,7 +11,7 @@ block content
       li(role="presentation"): a(href= "/sources/my") My sources
       li.active(role="presentation"): a(href= "/sources/all") All sources
   hr
-  
+
   //- My Sources
   if (page == "my_sources")
     .row
@@ -23,7 +23,7 @@ block content
               button.btn.btn-secondary(type="submit") Add source
     br
 
-    ul 
+    ul
       each src in sources.reverse()
         li
           h4= src.title
@@ -32,12 +32,12 @@ block content
           form(method="post", action= src.id + "?_method=DELETE")
             button.btn.btn-default.btn-delete(type="submit") Delete
           hr
-      else 
+      else
         li Нет источников.
 
   //- All Sources
   if (page == "all_sources")
-    ol 
+    ol
       each src in sources.reverse()
         li
           p= src.title
@@ -46,7 +46,7 @@ block content
             if (mySources.indexOf(src.id) == -1)
               button.btn.btn-default.my.btn-delete(type="submit") Add
             else
-              button.btn.btn-default.my.btn-delete(type="submit", disabled) Added  
+              button.btn.btn-default.my.btn-delete(type="submit", disabled) Added
           hr
-      else 
-        li Нет источников.    
+      else
+        li Нет источников.

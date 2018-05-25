@@ -34,9 +34,9 @@ module.exports = function(app, config) {
 
   require(config.root + '/config/passport.js');
   app.use(session({
-      secret: process.env.SECRET,
-      saveUninitialized: true,
-      resave: true
+    secret: process.env.SECRET || 'test',
+    saveUninitialized: true,
+    resave: true
   }));
   app.use(passport.initialize());
   app.use(passport.session());

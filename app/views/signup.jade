@@ -3,7 +3,7 @@ extends layout
 block content
   -if(errors)
     each error in errors
-      div.alert.alert-danger #{error.msg}  
+      div.alert.alert-danger #{error.msg}
   h2.main-title Регистрация
   hr
   .col-md-6
@@ -16,5 +16,5 @@ block content
         input.input.pass(name='email', type='email', placeholder='Email address')
         input.inputButton(type='submit', value='Sign me up!')
         .text-center
-          | already have an account? 
+          | already have an account?
           a#login_id(href='/login') login
