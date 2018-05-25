@@ -1,8 +1,8 @@
-var mongoose = require('mongoose');
-var Source = mongoose.model('Source');
-var bcrypt = require('bcryptjs');
+const mongoose = require('mongoose');
+const Source = mongoose.model('Source');
+const bcrypt = require('bcryptjs');
 
-var UserSchema = mongoose.Schema({
+const UserSchema = mongoose.Schema({
 	username: {
 		type: String,
 		unique: true,
@@ -14,10 +14,11 @@ var UserSchema = mongoose.Schema({
 	email: {
 		type: String
 	},
-	sources: [{type: Schema.Types.ObjectId, ref: 'Source'}]
+	sources: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Source'}]
 });
 
-var User = module.exports = mongoose.model('User', UserSchema);
+const User = module.exports = mongoose.model('User', UserSchema);
+
 
 module.exports.createUser = function(newUser, callback){
 	bcrypt.genSalt(10, function(err, salt) {
@@ -28,14 +29,17 @@ module.exports.createUser = function(newUser, callback){
 	});
 }
 
+
 module.exports.getUserByUsername = function(username, callback){
-	var query = {username: username};
+	const query = {username: username};
 	User.findOne(query, callback);
 }
+
 
 module.exports.getUserById = function(id, callback){
 	User.findById(id, callback);
 }
+
 
 module.exports.comparePassword = function(candidatePassword, hash, callback){
 	bcrypt.compare(candidatePassword, hash, function(err, isMatch) {
@@ -44,10 +48,7 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
 	});
 }
 
+
 module.exports.addSource = function(source, callback) {
 	User.sources.push(source);
-}
-
-module.exports.deleteSource = (source) => {
-	User.S
 }

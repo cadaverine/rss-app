@@ -1,23 +1,23 @@
-var express = require('express');
-var glob = require('glob');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var expressValidator = require('express-validator');
-var flash = require('connect-flash');
-var session = require('express-session');
-var compress = require('compression');
-var methodOverride = require('method-override');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+const express = require('express');
+const glob = require('glob');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
+const flash = require('connect-flash');
+const session = require('express-session');
+const compress = require('compression');
+const methodOverride = require('method-override');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
 
 module.exports = function(app, config) {
-  var env = process.env.NODE_ENV || 'development';
+  const env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
   app.locals.ENV_DEVELOPMENT = env == 'development';
-  
+
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'jade');
 
@@ -42,9 +42,9 @@ module.exports = function(app, config) {
   app.use(passport.session());
   app.use(expressValidator({
     errorFormatter: function(param, msg, value) {
-      var namespace = param.split('.');
-      var root = namespace.shift();
-      var formParam = root;
+      const namespace = param.split('.');
+      const root = namespace.shift();
+      const formParam = root;
 
       while(namespace.length) {
         formParam += '[' + namespace.shift() + ']';
@@ -68,17 +68,17 @@ module.exports = function(app, config) {
     next();
   });
 
-  var routes = glob.sync(config.root + '/app/routes/*.js');
+  const routes = glob.sync(config.root + '/app/routes/*.js');
   routes.forEach((route) => {
     require(route)(app);
   });
 
   app.use(function (req, res, next) {
-    var err = new Error('Not Found');
+    const err = new Error('Not Found');
     err.status = 404;
     next(err);
   });
-  
+
   if(app.get('env') === 'development'){
     app.use(function (err, req, res, next) {
       res.status(err.status || 500);

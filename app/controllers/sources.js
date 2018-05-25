@@ -1,12 +1,12 @@
-var mongoose = require('mongoose'),
-    User = mongoose.model('User'),
-    Source = mongoose.model('Source'),
-    Article = mongoose.model('Article'),
-    parser = require("rss-parser");
-    
+const mongoose = require('mongoose');
+const User = mongoose.model('User');
+const Source = mongoose.model('Source');
+const Article = mongoose.model('Article');
+const Parser = require("rss-parser");
+const parser = new Parser();
 
-var sourceVar = { sources: [] };
-var currentUser;
+const sourceVar = { sources: [] };
+let currentUser;
 
 
 //***************************
@@ -31,7 +31,7 @@ module.exports.getMySources = (req, res) => {
     .findOne({_id: req.user._id})
     .populate('sources')
     .exec((error, user) => {
-      if (error) { 
+      if (error) {
         req.flash('error_msg', error);
         res.render('sources', sourceVar);
       }
@@ -44,8 +44,8 @@ module.exports.getMySources = (req, res) => {
               description: source.description
             }
           })
-        res.render('sources', sourceVar); 
-      }      
+        res.render('sources', sourceVar);
+      }
     })
 }
 
@@ -128,12 +128,13 @@ function parseLinkToVariable(linkToParse) {
   });
 };
 
+
 function addSourceToDB(parsedObj){
   return new Promise((resolve, reject) => {
     new Source({
       link: parsedObj.rssLink,
-      title: parsedObj.feed.title != "" ? parsedObj.feed.title : parsedObj.feed.link,
-      description: parsedObj.feed.description
+      title: parsedObj.title != "" ? parsedObj.title : parsedObj.link,
+      description: parsedObj.content
     }).save((error, source) => {
       if(error) {
         reject(error);
@@ -153,6 +154,7 @@ function addSourceToDB(parsedObj){
   })
 }
 
+
 module.exports.addSource = (req, res) => {
   currentUser = req.user;
   checkLink(req.body.link)
@@ -160,7 +162,6 @@ module.exports.addSource = (req, res) => {
     .then(parsed => addSourceToDB(parsed))
     .then(() => res.redirect('/sources'))
     .catch(error => {
-      // sourceVar.err = error;
       req.flash('error_msg', error);
       res.redirect('/sources/my');
   });
@@ -177,8 +178,7 @@ module.exports.addSource = (req, res) => {
 
 
 module.exports.AddSourceFromDB = (req, res) => {
-
-  var contains = req.user.sources.indexOf(req.params.id);
+  const contains = req.user.sources.indexOf(req.params.id);
   if (contains == -1) {
     req.user.sources.push(req.params.id);
     req.user.save((err) => {
@@ -211,7 +211,7 @@ module.exports.AddSourceFromDB = (req, res) => {
 
 
 module.exports.deleteSource = (req, res) => {
-  var i = req.user.sources.indexOf(req.params.id);
+  const i = req.user.sources.indexOf(req.params.id);
   req.user.sources.splice(i, 1);
   req.user.save((err) => {
     if(err) {

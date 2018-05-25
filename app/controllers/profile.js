@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var User = mongoose.model('User');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+const mongoose = require('mongoose');
+const User = mongoose.model('User');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
 
 //***************************
@@ -39,10 +39,10 @@ module.exports.getSignupPage = (req, res) => {
 
 
 module.exports.sendSignupInfo = (req, res) => {
-  var email = req.body.email;
-  var username = req.body.username;
-  var password = req.body.password;
-  var password2 = req.body.password2;
+  const email = req.body.email;
+  const username = req.body.username;
+  const password = req.body.password;
+  const password2 = req.body.password2;
 
   //Validation
   req.checkBody('email', 'Email is required').notEmpty();
@@ -51,15 +51,14 @@ module.exports.sendSignupInfo = (req, res) => {
   req.checkBody('password', 'Password is required').notEmpty();
   req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
 
-  var errors = req.validationErrors();
+  const errors = req.validationErrors();
 
   if(errors) {
-    console.log(errors);
     res.render('signup',{
       title: 'Регистрация',
       errors: errors
-    }); 
-  } 
+    });
+  }
   else {
     User.findOne( { username: username },  (error, user) => {
       if (error) throw error;
@@ -67,19 +66,16 @@ module.exports.sendSignupInfo = (req, res) => {
         req.flash('error_msg', 'Пользователь с таким именем уже существует.');
         res.redirect('/signup');
         return;
-      } 
+      }
       else {
-        var newUser = new User({
-            email:email,
-            username: username,
-            password: password
+        const newUser = new User({
+          email:email,
+          username: username,
+          password: password
         });
 
-        User.createUser(newUser, function(err, user){
-            if(err) {
-              throw err;
-            } 
-            console.log(user);
+        User.createUser(newUser, (error, user) => {
+          if (error) throw err;
         });
 
         req.flash('success_msg', 'You are registered and can now login');

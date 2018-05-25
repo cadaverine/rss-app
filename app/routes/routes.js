@@ -1,14 +1,14 @@
-var express = require('express');
-var router = express.Router();
-var mongoose = require('mongoose');
-var User = mongoose.model('User');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+const express = require('express');
+const router = express.Router();
+const mongoose = require('mongoose');
+const User = mongoose.model('User');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
-var ctrlAbout = require('../controllers/about');
-var ctrlSources = require('../controllers/sources');
-var ctrlNews = require('../controllers/news');
-var ctrlProfile = require('../controllers/profile');
+const ctrlAbout = require('../controllers/about');
+const ctrlSources = require('../controllers/sources');
+const ctrlNews = require('../controllers/news');
+const ctrlProfile = require('../controllers/profile');
 
 
 module.exports = function (app) {
@@ -21,12 +21,12 @@ router.use((req, res, next) => {
     if(req.query._method == 'DELETE') {
         req.method = 'DELETE';
         req.url = req.path;
-    } 
+    }
     else if(req.query._method == 'PUT') {
         req.method = 'PUT';
         req.url = req.path;
-    }      
-    next(); 
+    }
+    next();
 });
 
 
