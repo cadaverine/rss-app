@@ -24,7 +24,7 @@
     "glob": "^7.1.2",
     "gulp-nodemon": "^2.2.1",
     "jade": "^1.11.0",
-    "jsonwebtoken": "^8.2.1",
+    "jsonwebtoken": "^9.0.0",
     "method-override": "^2.3.8",
     "mongoose": "^5.1.2",
     "morgan": "^1.6.1",
